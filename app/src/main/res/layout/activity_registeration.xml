@@ -19,13 +19,12 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
+            android:layout_marginTop="5dp"
             android:layout_alignParentBottom="true"
             android:layout_marginStart="19.5dp"
             android:layout_marginLeft="16dp"
-            android:layout_marginTop="50dp"
             android:layout_marginEnd="19.5dp"
             android:layout_marginRight="16dp"
-            android:layout_marginBottom="50dp"
             android:backgroundTint="#00FFFFFF"
             android:elevation="8dp">
 
@@ -40,7 +39,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
-                    android:padding="24dp">
+                    android:padding="15dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -55,7 +54,7 @@
                         android:id="@+id/user_type_group"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
+                        android:layout_marginTop="10dp"
                         android:orientation="horizontal">
 
                         <RadioButton
@@ -76,7 +75,7 @@
                     <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
+                        android:layout_marginTop="10dp"
                         android:hint="Name">
 
                         <com.google.android.material.textfield.TextInputEditText
@@ -88,7 +87,7 @@
                     <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
+                        android:layout_marginTop="10dp"
                         android:hint="Expertise (Lawyers only)">
 
                         <com.google.android.material.textfield.TextInputEditText
@@ -100,7 +99,7 @@
                     <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
+                        android:layout_marginTop="10dp"
                         android:hint="Price per Case (Lawyers only)">
 
                         <com.google.android.material.textfield.TextInputEditText
@@ -109,11 +108,36 @@
                             android:layout_height="wrap_content"
                             android:inputType="number" />
                     </com.google.android.material.textfield.TextInputLayout>
+                    <!-- Add these after the price_input TextInputLayout and before the register_button -->
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:hint="Phone Number">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/phone_input"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="phone" />
+                    </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
+                        android:layout_marginTop="10dp"
+                        android:hint="Location">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/location_input"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
                         android:hint="Email">
 
                         <com.google.android.material.textfield.TextInputEditText
@@ -125,7 +149,7 @@
                     <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
+                        android:layout_marginTop="10dp"
                         android:hint="Password">
 
                         <com.google.android.material.textfield.TextInputEditText
@@ -139,7 +163,7 @@
                         android:id="@+id/register_button"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="24dp"
+                        android:layout_marginTop="20dp"
                         android:backgroundTint="#FF5722"
                         android:text="Register"
                         android:textColor="#FFFFFF" />

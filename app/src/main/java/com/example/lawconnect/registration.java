@@ -28,6 +28,8 @@ public class registration extends AppCompatActivity {
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         FirebaseDatabase database = FirebaseDatabase.getInstance();
 
+        EditText phoneInput = findViewById(R.id.phone_input);
+        EditText locationInput = findViewById(R.id.location_input);
         EditText emailInput = findViewById(R.id.email_input);
         EditText passwordInput = findViewById(R.id.password_input);
         RadioGroup roleGroup = findViewById(R.id.user_type_group);
@@ -42,10 +44,14 @@ public class registration extends AppCompatActivity {
                 nameInput.setVisibility(View.VISIBLE);
                 expertiseInput.setVisibility(View.VISIBLE);
                 priceInput.setVisibility(View.VISIBLE);
+                phoneInput.setVisibility(View.VISIBLE);
+                locationInput.setVisibility(View.VISIBLE);
             } else {
                 nameInput.setVisibility(View.GONE);
                 expertiseInput.setVisibility(View.GONE);
                 priceInput.setVisibility(View.GONE);
+                phoneInput.setVisibility(View.GONE);
+                locationInput.setVisibility(View.GONE);
             }
         });
 
@@ -62,7 +68,9 @@ public class registration extends AppCompatActivity {
                                 Lawyer lawyer = new Lawyer(
                                         nameInput.getText().toString(),
                                         expertiseInput.getText().toString(),
-                                        Integer.parseInt(priceInput.getText().toString())
+                                        Integer.parseInt(priceInput.getText().toString()),
+                                        phoneInput.getText().toString(),
+                                        locationInput.getText().toString()
                                 );
                                 database.getReference("lawyers").child(uid).setValue(lawyer);
                             }

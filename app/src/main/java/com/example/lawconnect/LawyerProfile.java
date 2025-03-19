@@ -23,24 +23,27 @@ public class LawyerProfile extends AppCompatActivity {
         TextView nameText = findViewById(R.id.profile_name);
         TextView expertiseText = findViewById(R.id.profile_expertise);
         TextView priceText = findViewById(R.id.profile_price);
-        MaterialButton chatButton = findViewById(R.id.chat_button);
+        TextView phoneText = findViewById(R.id.profile_phone);
+        TextView locationText = findViewById(R.id.profile_location);
 
         // Get data from intent
         String name = getIntent().getStringExtra("lawyer_name");
         String expertise = getIntent().getStringExtra("lawyer_expertise");
         int price = getIntent().getIntExtra("lawyer_price", 0);
+        String phone = getIntent().getStringExtra("lawyer_phone");
+        String location = getIntent().getStringExtra("lawyer_location");
 
         nameText.setText(name);
         expertiseText.setText("Expertise: " + expertise);
         priceText.setText("Price per Case: ₹" + price);
+        phoneText.setText("Phone: " + phone);
+        locationText.setText("Location: " + location);
 
         // Fade-in animation
         View profileView = findViewById(android.R.id.content);
         profileView.setAlpha(0f);
         profileView.animate().alpha(1f).setDuration(500).start();
 
-        // Chat button (mocked)
-        chatButton.setOnClickListener(v -> Toast.makeText(this, "Chat feature coming soon!", Toast.LENGTH_SHORT).show());
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
