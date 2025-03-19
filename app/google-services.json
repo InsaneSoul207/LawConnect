@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1085174717996",
+    "project_id": "lawconnect-007",
+    "storage_bucket": "lawconnect-007.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1085174717996:android:55b88795a9a6b3a4613b89",
+        "android_client_info": {
+          "package_name": "com.example.lawconnect"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCSJkQ6TBA10xX-7ebd2GHWVEBFNbjXRx4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
