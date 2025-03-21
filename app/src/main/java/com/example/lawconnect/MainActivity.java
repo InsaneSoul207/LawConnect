@@ -13,6 +13,7 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
@@ -71,7 +72,10 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
 
-
+        FloatingActionButton chatbotButton = findViewById(R.id.chatbot_button);
+        chatbotButton.setOnClickListener(v -> {
+            startActivity(new Intent(MainActivity.this, ChatBot.class));
+        });
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());

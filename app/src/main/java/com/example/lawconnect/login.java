@@ -50,7 +50,7 @@ public class login extends AppCompatActivity {
         registerLink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(login.this,registeration.class);
+                Intent intent = new Intent(login.this,registration.class);
                 startActivity(intent);
                 finish();
             }
@@ -61,79 +61,5 @@ public class login extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-    }
-
-    public class registeration extends AppCompatActivity {
-
-        @Override
-        protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            EdgeToEdge.enable(this);
-            setContentView(R.layout.activity_registeration);
-            FirebaseAuth mAuth = FirebaseAuth.getInstance();
-            FirebaseDatabase database = FirebaseDatabase.getInstance();
-
-            EditText emailInput = findViewById(R.id.email_input);
-            EditText passwordInput = findViewById(R.id.password_input);
-            RadioGroup roleGroup = findViewById(R.id.user_type_group);
-            EditText nameInput = findViewById(R.id.name_input);
-            EditText expertiseInput = findViewById(R.id.expertise_input);
-            EditText priceInput = findViewById(R.id.price_input);
-            Button registerButton = findViewById(R.id.register_button);
-            TextView LoginLink = findViewById(R.id.loginlink);
-
-            roleGroup.setOnCheckedChangeListener((group, checkedId) -> {
-                if (checkedId == R.id.lawyer_radio) {
-                    nameInput.setVisibility(View.VISIBLE);
-                    expertiseInput.setVisibility(View.VISIBLE);
-                    priceInput.setVisibility(View.VISIBLE);
-                } else {
-                    nameInput.setVisibility(View.GONE);
-                    expertiseInput.setVisibility(View.GONE);
-                    priceInput.setVisibility(View.GONE);
-                }
-            });
-
-            registerButton.setOnClickListener(v -> {
-                String email = emailInput.getText().toString();
-                String password = passwordInput.getText().toString();
-                boolean isLawyer = roleGroup.getCheckedRadioButtonId() == R.id.lawyer_radio;
-
-                mAuth.createUserWithEmailAndPassword(email, password)
-                        .addOnCompleteListener(task -> {
-                            if (task.isSuccessful()) {
-                                String uid = mAuth.getCurrentUser().getUid();
-                                if (isLawyer) {
-                                    Lawyer lawyer = new Lawyer(
-                                            nameInput.getText().toString(),
-                                            expertiseInput.getText().toString(),
-                                            Integer.parseInt(priceInput.getText().toString())
-                                    );
-                                    database.getReference("lawyers").child(uid).setValue(lawyer);
-                                }
-                                database.getReference("users").child(uid).child("role").setValue(isLawyer ? "lawyer" : "client");
-                                Toast.makeText(registeration.this, "Registration successful", Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(registeration.this, MainActivity.class));
-                                finish();
-                            } else {
-                                Toast.makeText(registeration.this, "Registration failed", Toast.LENGTH_SHORT).show();
-                            }
-                        });
-            });
-            LoginLink.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(registeration.this,login.class);
-                    startActivity(intent);
-                    finish();
-                }
-            });
-
-            ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-                Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-                v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-                return insets;
-            });
-        }
     }
 }
